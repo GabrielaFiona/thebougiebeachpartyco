@@ -6,18 +6,19 @@
     <title>Shop Rentals | Bougie Beach Party Co.</title>
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. APP LAYOUT --- */
+        /* --- 1. APP LAYOUT (Locked Screen) --- */
         body, html { 
             height: 100%;
             margin: 0; 
             padding: 0;
-            overflow: hidden; 
+            overflow: hidden; /* Only the iframe scrolls */
             background-color: #ffffff !important;
         }
 
-        /* --- 2. HEADER --- */
+        /* --- 2. HEADER (Fixed Top) --- */
         .site-header {
             position: absolute;
             top: 0;
@@ -29,14 +30,15 @@
             z-index: 100;
         }
 
-        /* --- 3. SHOP WINDOW --- */
+        /* --- 3. SHOP WINDOW (Fills Middle) --- */
         .shop-wrapper {
             position: absolute;
             top: 90px;
-            /* This gap MUST match the footer height so they touch perfectly */
+            /* IMPORTANT: This must match the Footer Height (320px) */
             bottom: 320px; 
             width: 100%;
             z-index: 1;
+            background: #ffffff;
         }
 
         iframe {
@@ -46,57 +48,62 @@
             display: block;
         }
 
-        /* --- 4. THE CUSTOM FOOTER (Screenshot Match) --- */
+        /* --- 4. THE FOOTER (Fixed Bottom - Screenshot Match) --- */
         .bbp-footer {
             position: absolute;
             bottom: 0;
             left: 0;
             width: 100%;
             height: 320px; /* Fixed Height */
-            background-color: #314136; /* Dark Forest Green from Screenshot */
+            background-color: #314136; /* Dark Green from screenshot */
             color: white;
             z-index: 200;
+            
+            /* Flex Layout to center everything */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
+            gap: 15px; /* Spacing between elements */
+            
             padding: 20px;
             box-sizing: border-box;
-            /* No Gold Border */
-            border: none; 
         }
 
-        /* Logo */
+        /* Logo Image */
         .footer-logo {
-            width: 80px;
+            width: 90px;
             height: auto;
+            margin-bottom: 5px;
         }
 
-        /* Title */
+        /* Company Name */
         .footer-title {
             font-family: 'Josefin Slab', serif;
             font-size: 1.8rem;
             margin: 0;
             letter-spacing: 1px;
             font-weight: 400;
+            color: #ffffff;
         }
 
-        /* Buttons Row */
+        /* Buttons Container */
         .footer-actions {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
+            margin-top: 5px;
         }
 
-        /* Email Button (Dark transparent) */
+        /* Email Button (Dark transparent pill) */
         .btn-footer-email {
             background-color: rgba(255, 255, 255, 0.15);
             color: white;
             padding: 12px 25px;
-            border-radius: 50px;
+            border-radius: 50px; /* Pill shape */
             text-decoration: none;
+            font-family: 'Poppins', sans-serif;
             font-weight: 600;
             display: flex;
             align-items: center;
@@ -105,13 +112,14 @@
         }
         .btn-footer-email:hover { background-color: rgba(255, 255, 255, 0.25); }
 
-        /* Phone Button (White) */
+        /* Phone Button (White pill) */
         .btn-footer-phone {
             background-color: #ffffff;
-            color: #314136;
+            color: #314136; /* Dark Text */
             padding: 12px 25px;
-            border-radius: 50px;
+            border-radius: 50px; /* Pill shape */
             text-decoration: none;
+            font-family: 'Poppins', sans-serif;
             font-weight: 700;
             display: flex;
             align-items: center;
@@ -124,7 +132,7 @@
         .footer-socials {
             display: flex;
             gap: 15px;
-            margin-top: 5px;
+            margin-top: 10px;
         }
         .social-circle {
             background: white;
@@ -141,8 +149,9 @@
         }
         .social-circle:hover { transform: scale(1.1); }
 
-        /* Copyright */
+        /* Copyright Text */
         .footer-copy {
+            font-family: 'Poppins', sans-serif;
             font-size: 0.8rem;
             opacity: 0.8;
             margin-top: 10px;
@@ -153,9 +162,10 @@
             .footer-title { font-size: 1.4rem; text-align: center; }
             .footer-actions { flex-direction: column; width: 100%; max-width: 280px; }
             .btn-footer-email, .btn-footer-phone { justify-content: center; width: 100%; box-sizing: border-box; }
-            /* Adjust layout height for mobile if needed */
-            .bbp-footer { height: auto; min-height: 340px; padding: 30px 20px; }
-            .shop-wrapper { bottom: 340px; }
+            
+            /* Adjust layout height for mobile */
+            .bbp-footer { height: auto; min-height: 350px; padding: 30px 20px; }
+            .shop-wrapper { bottom: 350px; } /* Must match mobile footer height */
         }
     </style>
 </head>
