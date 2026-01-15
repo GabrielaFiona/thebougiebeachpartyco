@@ -9,97 +9,110 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. LOCKED LAYOUT --- */
+        /* --- 1. NATURAL SCROLL LAYOUT --- */
+        /* We allow the main page to scroll naturally. Simple and reliable. */
         body, html { 
-            height: 100%;
             margin: 0; 
             padding: 0;
-            overflow: hidden; 
-            background-color: #ffffff !important;
+            background-color: #ffffff !important; 
+            overflow-x: hidden; 
+            overflow-y: auto; /* Main page scroll is ON */
         }
 
-        /* --- 2. HEADER --- */
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        /* --- 2. STICKY HEADER --- */
         .site-header {
-            position: absolute;
+            position: sticky; /* Sticks to top while you scroll */
             top: 0;
             left: 0;
             width: 100%;
             height: 90px;
             background: #ffffff !important; 
+            border-bottom: none !important; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            z-index: 100;
+            z-index: 1000;
         }
 
-        /* --- 3. SHOP WINDOW (Calculated Gap) --- */
+        /* --- 3. THE SHOP WINDOW --- */
         .shop-wrapper {
-            position: absolute;
-            top: 90px;
-            /* STOPPING POINT: This matches the footer height (260px) */
-            bottom: 260px; 
+            position: relative;
             width: 100%;
-            z-index: 1;
             background: #ffffff;
+            z-index: 1;
+            /* This centers the iframe content */
+            display: flex;
+            justify-content: center;
         }
 
         iframe {
             width: 100%;
-            height: 100%;
+            /* TALL HEIGHT: This is the secret. We force it tall so it doesn't scroll inside. */
+            height: 4500px; 
             border: none;
             display: block;
+            /* We hide the iframe's internal scrollbar */
+            overflow: hidden; 
         }
 
-        /* --- 4. THE FOOTER (Screenshot Style) --- */
+        /* --- 4. THE FOOTER (New Dark Green Design) --- */
+        /* It sits naturally at the bottom of the page flow */
         .bbp-footer {
-            position: absolute;
-            bottom: 0;
-            left: 0;
+            position: relative;
             width: 100%;
-            height: 260px; /* FIXED HEIGHT */
             background-color: #314136; /* Dark Green */
             color: white;
-            z-index: 200;
+            z-index: 10;
+            
+            /* Flex Layout */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            padding: 15px;
+            gap: 20px;
+            padding: 40px 20px; /* Nice spacious padding */
             box-sizing: border-box;
         }
 
         /* Logo */
-        .footer-logo { width: 70px; height: auto; margin-bottom: 5px; }
+        .footer-logo { width: 90px; height: auto; margin-bottom: 5px; }
 
         /* Title */
         .footer-title {
             font-family: 'Josefin Slab', serif;
-            font-size: 1.6rem;
-            margin: 5px 0 10px 0;
+            font-size: 2rem;
+            margin: 0;
             letter-spacing: 1px;
             font-weight: 400;
+            color: #ffffff;
+            text-align: center;
         }
 
         /* Buttons Row */
         .footer-actions {
             display: flex;
-            gap: 12px;
+            gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-bottom: 10px;
+            margin-top: 10px;
         }
 
         /* Email Button */
         .btn-footer-email {
             background-color: rgba(255, 255, 255, 0.15);
             color: white;
-            padding: 10px 20px;
+            padding: 14px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
             font-weight: 600;
-            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: background 0.3s;
         }
         .btn-footer-email:hover { background-color: rgba(255, 255, 255, 0.25); }
@@ -108,32 +121,31 @@
         .btn-footer-phone {
             background-color: #ffffff;
             color: #314136;
-            padding: 10px 20px;
+            padding: 14px 30px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
             font-weight: 700;
-            font-size: 0.9rem;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 10px;
             transition: transform 0.2s;
         }
         .btn-footer-phone:hover { transform: scale(1.05); }
 
         /* Social Icons */
-        .footer-socials { display: flex; gap: 12px; }
+        .footer-socials { display: flex; gap: 15px; margin-top: 15px; }
         .social-circle {
             background: white;
             color: #314136;
-            width: 35px;
-            height: 35px;
+            width: 45px;
+            height: 45px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.1rem;
+            font-size: 1.3rem;
             transition: transform 0.2s;
         }
         .social-circle:hover { transform: scale(1.1); }
@@ -141,17 +153,16 @@
         /* Copyright */
         .footer-copy {
             font-family: 'Poppins', sans-serif;
-            font-size: 0.75rem;
-            opacity: 0.7;
-            margin-top: 10px;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            margin-top: 20px;
         }
-
-        /* Mobile Adjustment */
+        
+        /* Mobile Fixes */
         @media (max-width: 600px) {
-            .bbp-footer { height: 320px; padding: 20px; }
-            .shop-wrapper { bottom: 320px; } /* Shop must stop earlier on mobile */
-            .footer-actions { flex-direction: column; width: 100%; max-width: 260px; }
-            .btn-footer-email, .btn-footer-phone { justify-content: center; width: 100%; }
+            .footer-title { font-size: 1.6rem; }
+            .btn-footer-email, .btn-footer-phone { width: 100%; justify-content: center; }
+            .footer-actions { flex-direction: column; width: 100%; max-width: 300px; }
         }
     </style>
 </head>
@@ -177,12 +188,13 @@
     </header>
 
     <div class="shop-wrapper">
-        <iframe src="https://thebougiebeachpartyco.rentmy.shop/products-list" name="rentmy-frame" title="RentMy Shop"></iframe>
+        <iframe src="https://thebougiebeachpartyco.rentmy.shop/products-list" name="rentmy-frame" title="RentMy Shop" scrolling="no"></iframe>
     </div>
 
     <footer class="bbp-footer">
         <img src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="Logo" class="footer-logo">
         <h2 class="footer-title">The Bougie Beach Party Co.</h2>
+        
         <div class="footer-actions">
             <a href="mailto:thebougiebeachpartyco@gmail.com" class="btn-footer-email">
                 <i class="fa-solid fa-envelope" style="color: #ff6b6b;"></i> Email Us
@@ -191,10 +203,12 @@
                 <i class="fa-solid fa-phone"></i> Call / Text (541) 351-8497
             </a>
         </div>
+        
         <div class="footer-socials">
             <a href="https://www.instagram.com/thebougiebeachpartyco" target="_blank" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/thebougiebeachpartyco" target="_blank" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
+        
         <div class="footer-copy">© 2026 Bougie Beach Party Co. • All rights reserved.</div>
     </footer>
 
