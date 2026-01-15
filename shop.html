@@ -7,22 +7,28 @@
     <link rel="stylesheet" href="style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    
     <style>
-        /* 1. FORCE WHITE BACKGROUND (Removes the Pink Bar) */
+        /* 1. OVERRIDE THE PINK THEME */
+        /* Force the background to be white specifically for this page */
         body, html { 
+            background-color: #ffffff !important; 
+            background: #ffffff !important;
             height: 100%; 
             margin: 0; 
-            overflow: hidden;
-            background-color: #ffffff !important; /* Overrides the pink from style.css */
+            overflow: hidden; 
         }
-        
-        /* 2. ADJUST TOP SPACING */
+
+        /* 2. THE SHOP CONTAINER */
         .shop-wrapper {
+            position: absolute; /* Lock it in place */
+            top: 80px; /* Start exactly below the header */
+            left: 0;
             width: 100%;
-            height: calc(100vh - 80px); 
-            margin-top: 80px; /* Matches header height exactly */
+            bottom: 0; /* Stretch to bottom */
             border: none;
-            background: #ffffff; /* Ensures the container itself is white */
+            background: #ffffff; /* Ensure white background behind iframe */
+            z-index: 1;
         }
 
         iframe {
