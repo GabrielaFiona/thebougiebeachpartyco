@@ -9,75 +9,64 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. LAYOUT RESET --- */
+        /* --- 1. THE APP SHELL (The Real Fix) --- */
+        /* We turn the whole body into a column that fills the screen exactly */
         body, html { 
-            background-color: #ffffff !important; 
             height: 100%; 
             margin: 0; 
-            overflow: hidden; /* Stops the main page from scrolling */
+            padding: 0;
+            background-color: #ffffff; /* Safety background */
+            overflow: hidden; /* Stops the main page from having scrollbars */
         }
 
-        /* --- 2. HEADER (Fixed at Top) --- */
+        body {
+            display: flex;
+            flex-direction: column; /* Stack: Header -> Shop -> Footer */
+        }
+
+        /* --- 2. HEADER (Top Block) --- */
         .site-header {
-            position: fixed;
-            top: 0; left: 0; width: 100%;
+            /* We reset the global fixed positioning to make it part of the stack */
+            position: relative !important; 
+            flex: 0 0 auto; /* Don't grow, don't shrink, just be your height */
             background: #ffffff !important; 
             border-bottom: none !important; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            z-index: 1000;
+            z-index: 10;
         }
 
-        /* --- 3. THE SHOP CONTAINER (The Fix) --- */
+        /* --- 3. THE SHOP (The Flexible Middle) --- */
         .shop-wrapper {
-            position: fixed;
-            top: 80px; /* Starts below header */
-            left: 0; 
+            /* This is the magic. It forces the shop to fill ALL remaining space. */
+            flex: 1 1 auto; 
+            position: relative;
             width: 100%;
-            bottom: 0; /* Stretches to bottom... */
-            
-            /* THE MAGIC FIX: We add huge padding at the bottom.
-               This forces the iframe to stop BEFORE it hits the footer. 
-               The footer will sit in this empty padding space. */
-            padding-bottom: 340px; 
-            box-sizing: border-box; /* Ensures padding is calculated inside the height */
-            
             background: #ffffff;
-            z-index: 1; 
+            overflow: hidden;
+            margin: 0;
+            padding: 0;
         }
 
         iframe {
+            position: absolute;
+            top: 0; 
+            left: 0;
             width: 100%;
-            height: 100%; /* Fills the padded area only */
+            height: 100%;
             border: none;
             display: block;
         }
 
-        /* --- 4. FOOTER (Fixed at Bottom) --- */
+        /* --- 4. FOOTER (Bottom Block) --- */
         .bbp-footer {
-            position: fixed;
-            bottom: 0; 
-            left: 0; 
-            width: 100%;
+            /* No longer fixed! It sits naturally at the bottom of the stack. */
+            position: relative !important;
+            flex: 0 0 auto; /* Takes exactly the height it needs */
             margin: 0 !important;
-            padding: 20px 20px !important; /* Compact padding */
+            padding: 15px 20px !important;
             background: var(--green);
-            z-index: 2000; /* Sits on top of the padding space */
+            z-index: 10;
             border-top: 4px solid var(--gold);
-            
-            /* Ensure footer content doesn't get too tall */
-            max-height: 340px; 
-            overflow-y: auto; /* Scroll inside footer if it's somehow too big */
-        }
-
-        /* --- 5. MOBILE ADJUSTMENT --- */
-        /* On mobile, footers are taller because text stacks. We increase the safety zone. */
-        @media (max-width: 768px) {
-            .shop-wrapper {
-                padding-bottom: 420px; /* More space for stacked mobile footer */
-            }
-            .bbp-footer {
-                max-height: 420px;
-            }
         }
     </style>
 </head>
