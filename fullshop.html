@@ -9,48 +9,39 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. NATURAL SCROLL LAYOUT --- */
-        /* We allow the main page to scroll naturally so the footer can "hide" below the fold */
+        /* --- 1. THE APP SHELL (Fixed Header/Footer, Scrolling Middle) --- */
         body, html { 
-            height: auto; 
-            min-height: 100%;
+            height: 100vh; /* Standard height */
+            height: 100dvh; /* Mobile-safe height */
             margin: 0; 
             padding: 0;
             background-color: #ffffff !important; 
-            overflow-x: hidden; /* Prevent side scrolling */
-            overflow-y: auto;   /* Allow vertical scrolling to reach the footer */
+            overflow: hidden; /* Stops the MAIN page from scrolling */
         }
 
         body {
             display: flex;
-            flex-direction: column;
-            padding-top: 0 !important;
+            flex-direction: column; /* Stack: Header -> Shop -> Footer */
         }
 
-        /* --- 2. STICKY HEADER --- */
-        /* The header sticks to the top while you scroll down to find the footer */
+        /* --- 2. HEADER (Fixed Top) --- */
         .site-header {
-            position: sticky; /* Modern "Sticky" positioning */
-            top: 0;
-            left: 0;
+            position: relative !important; 
+            flex: 0 0 auto; /* Keeps header solid */
             width: 100%;
             background: #ffffff !important; 
             border-bottom: none !important; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            z-index: 1000;
+            z-index: 100;
         }
 
-        /* --- 3. THE SHOP WINDOW --- */
+        /* --- 3. THE SHOP (The Scrolling Middle) --- */
         .shop-wrapper {
+            flex: 1; /* Fills ALL space between header and footer */
             position: relative;
             width: 100%;
-            /* We set the height to take up most of the screen (90% of viewport).
-               This pushes the footer JUST off-screen, requiring a small scroll to see it.
-            */
-            height: 90vh; 
-            min-height: 600px; /* Safety minimum for mobile */
             background: #ffffff;
-            z-index: 1;
+            overflow: hidden; /* Only the iframe window scrolls */
         }
 
         iframe {
@@ -60,15 +51,14 @@
             display: block;
         }
 
-        /* --- 4. THE FOOTER (Natural Position) --- */
-        /* It sits naturally at the bottom of the stack. It is NOT fixed. */
+        /* --- 4. FOOTER (Fixed Bottom) --- */
         .bbp-footer {
-            position: relative;
-            width: 100%;
+            position: relative !important;
+            flex: 0 0 auto; /* Keeps footer solid */
             margin: 0 !important;
-            padding: 20px !important;
+            padding: 15px 20px !important;
             background: var(--green);
-            z-index: 10;
+            z-index: 100;
             border-top: 4px solid var(--gold);
         }
     </style>
