@@ -5,26 +5,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Shop Rentals | Bougie Beach Party Co.</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+   
     <style>
-        /* --- 1. FULL SCREEN LAYOUT (From your working script) --- */
-        body, html { 
+        /* --- 1. SINGLE SCROLL LAYOUT --- */
+        body, html {
             height: 100%;
-            margin: 0; 
+            margin: 0;
             padding: 0;
-            overflow: hidden; 
-            background-color: #ffffff !important; 
+            overflow: hidden; /* Main page holds still */
+            background-color: #ffffff !important;
         }
 
-        /* --- 2. HEADER --- */
+        /* --- 2. HEADER (Fixed) --- */
         .site-header {
             position: absolute;
             top: 0;
             left: 0;
             width: 100%;
-            height: 90px; 
-            background: #ffffff !important; 
+            height: 90px;
+            background: #ffffff !important;
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             z-index: 1000;
         }
@@ -32,8 +33,8 @@
         /* --- 3. SHOP WINDOW (Fills Screen) --- */
         .shop-wrapper {
             position: absolute;
-            top: 90px; 
-            bottom: 0; /* Fills the screen completely */
+            top: 90px;
+            bottom: 0;
             width: 100%;
             z-index: 1;
         }
@@ -45,67 +46,42 @@
             display: block;
         }
 
-        /* --- 4. THE FOOTER (Positioned like the Floating Button) --- */
-        .bbp-footer {
-            position: fixed; /* Locks to bottom of screen */
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 120px; /* Matches the RentMy Cushion */
-            
-            /* THE RIGHT GREEN */
-            background-color: #314136; 
-            border-top: 4px solid #b38538; /* Gold Border */
+        /* --- 4. FLOATING CONTACT BUTTON (FAB) --- */
+        .fab-contact {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: var(--green);
             color: white;
-            z-index: 9999; /* Super high z-index ensures visibility */
-            
-            /* Layout */
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 10px;
-            box-sizing: border-box;
-            text-align: center;
-            font-family: sans-serif;
-        }
-
-        .footer-title {
-            font-size: 16px;
-            font-weight: 600;
-            margin-bottom: 8px;
-            letter-spacing: 0.5px;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 20px;
-            font-size: 14px;
-        }
-
-        /* BUTTON STYLING (Tip: This makes them function!) */
-        .footer-links a {
-            color: white;
+            padding: 15px 25px;
+            border-radius: 50px;
             text-decoration: none;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            z-index: 2000;
             display: flex;
             align-items: center;
-            gap: 6px;
-            transition: opacity 0.2s;
-            /* Optional: Make them look like pill buttons */
-            background: rgba(255,255,255,0.1);
-            padding: 8px 15px;
-            border-radius: 20px;
+            gap: 10px;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            transition: transform 0.2s ease, background 0.2s;
+            border: 2px solid var(--gold);
         }
 
-        .footer-links a:hover {
-            background: rgba(255,255,255,0.2);
+        .fab-contact:hover {
+            transform: scale(1.05);
+            background-color: #3d664a;
         }
+
+        .fab-icon { font-size: 1.2rem; }
 
         /* Mobile Adjustment */
         @media (max-width: 600px) {
-            .footer-links { flex-direction: column; gap: 8px; }
-            .bbp-footer { height: 150px; } /* Taller for mobile */
-            /* NOTE: If you use this mobile height, change RentMy padding to 150px too */
+            .fab-contact {
+                bottom: 20px;
+                right: 20px;
+                padding: 12px 20px;
+                font-size: 0.9rem;
+            }
         }
     </style>
 </head>
@@ -133,18 +109,6 @@
     <div class="shop-wrapper">
         <iframe src="https://thebougiebeachpartyco.rentmy.shop/products-list" name="rentmy-frame" title="RentMy Shop"></iframe>
     </div>
-
-    <footer class="bbp-footer">
-        <div class="footer-title">The Bougie Beach Party Co.</div>
-        <div class="footer-links">
-            <a href="mailto:thebougiebeachpartyco@gmail.com">
-                <i class="fa-solid fa-envelope"></i> Email Us
-            </a>
-            <a href="tel:+15413518497">
-                <i class="fa-solid fa-phone"></i> Call/Text: (541) 351-8497
-            </a>
-        </div>
-    </footer>
 
     <script src="script.js"></script>
 </body>
