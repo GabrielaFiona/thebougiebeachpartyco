@@ -14,33 +14,33 @@
             background-color: #ffffff !important; 
             height: 100%; 
             margin: 0; 
-            overflow: hidden; /* Prevents double scrollbars (browser + iframe) */
+            overflow: hidden; /* Prevents double scrollbars */
         }
 
         body {
             display: flex;
             flex-direction: column;
-            padding-top: 0 !important; /* FIX: Overrides the 80px padding from style.css to remove the gap */
+            padding-top: 0 !important; /* Removes global header padding */
         }
 
         /* --- 2. HEADER ADJUSTMENTS --- */
-        /* We override global header styles here to blend with the white iframe */
         .site-header {
             position: fixed;
-            background: #ffffff !important; /* Pure white to match iframe */
-            border-bottom: none !important; /* Removes the visible line */
-            box-shadow: 0 4px 20px rgba(0,0,0,0.04); /* Very subtle shadow for depth */
+            background: #ffffff !important; 
+            border-bottom: none !important; 
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); 
         }
 
         /* --- 3. THE SHOP CONTAINER --- */
         .shop-wrapper {
-            flex: 1; /* Automatically takes all available height between Header and Footer */
+            flex: 1; /* Takes exactly the space between header and footer */
             width: 100%;
             border: none;
             background: #ffffff;
-            margin-top: 80px; /* Pushes iframe down exactly below the fixed header */
+            margin-top: 80px; /* Pushes content below fixed header */
             overflow: hidden;
             position: relative;
+            z-index: 1; /* Keeps it on the base layer */
         }
 
         iframe {
@@ -54,18 +54,16 @@
         /* --- 4. FOOTER ADJUSTMENTS --- */
         .bbp-footer {
             margin-top: 0 !important;
-            padding: 15px 20px !important; /* Compact styling for the shop view */
-            flex-shrink: 0; /* Ensures footer never gets squashed or pushed off */
+            padding: 15px 20px !important;
+            flex-shrink: 0; /* Prevents footer from collapsing */
+            background: var(--green);
             position: relative;
-            z-index: 10;
-            background: var(--green); /* Ensures background color stays solid */
+            
+            /* THE FIX: Remove shadow and layering to stop it from "floating" */
+            box-shadow: none !important;
+            z-index: auto !important; 
+            border-top: 1px solid rgba(255,255,255,0.1); /* Subtle definition line instead of shadow */
         }
-        
-        /* Optional: Hide the pulsing logo in footer on this page to save vertical space? 
-           Remove comments below if you want an even smaller footer */
-        /* .bbp-logo-wrap { display: none; } 
-        .bbp-footer { padding: 10px 20px !important; }
-        */
     </style>
 </head>
 <body>
