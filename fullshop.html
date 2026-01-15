@@ -9,94 +9,68 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. SINGLE SCROLL "APP" LAYOUT --- */
-        /* We lock the main window so ONLY the iframe scrolls */
+        /* --- 1. NATURAL FLOW LAYOUT --- */
         body, html { 
-            height: 100%;
             margin: 0; 
             padding: 0;
             background-color: #ffffff !important; 
-            overflow: hidden; /* DISABLES site-wide scrolling */
+            /* We allow the page to scroll naturally */
+            overflow-x: hidden; 
+            overflow-y: auto;
         }
 
         body {
             display: flex;
-            flex-direction: column; /* Stack items vertically */
+            flex-direction: column;
+            min-height: 100vh;
         }
 
-        /* --- 2. HEADER (Fixed at top) --- */
+        /* --- 2. STICKY HEADER --- */
         .site-header {
-            flex: 0 0 auto; /* Don't grow or shrink */
+            position: sticky;
+            top: 0;
+            left: 0;
             width: 100%;
             background: #ffffff !important; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             z-index: 1000;
         }
 
-        /* --- 3. THE SHOP (Fills remaining space) --- */
+        /* --- 3. THE SHOP WRAPPER --- */
         .shop-wrapper {
-            flex: 1 1 auto; /* Grow to fill all available space */
             position: relative;
             width: 100%;
-            overflow: hidden; /* Ensure wrapper doesn't scroll, only iframe does */
+            /* This centers the iframe */
+            display: flex;
+            justify-content: center;
+            background: #ffffff;
+            z-index: 1;
         }
 
         iframe {
-            position: absolute;
-            top: 0;
-            left: 0;
             width: 100%;
-            height: 100%;
             border: none;
             display: block;
+            
+            /* --- IMPORTANT: MANUAL HEIGHT SETTING --- */
+            /* We set this TALL enough to fit your products so the iframe 
+               doesn't need to scroll. This pushes the footer down. */
+            height: 3500px; /* Adjust this number if you add more products! */
+            
+            /* We hide the iframe's scrollbar so only the main page scrolls */
+            overflow: hidden;
         }
 
-        /* --- 4. COMPACT FOOTER (Fixed at bottom) --- */
+        /* --- 4. THE FOOTER --- */
+        /* This will naturally sit at the bottom of the 3500px iframe */
         .bbp-footer {
-            flex: 0 0 auto; /* Don't grow or shrink */
+            position: relative;
             width: 100%;
             margin: 0 !important;
-            padding: 10px 20px !important; /* Smaller padding */
+            padding: 20px !important;
             background: var(--green);
             z-index: 10;
             border-top: 4px solid var(--gold);
-            
-            /* Flex layout for a tighter footer bar */
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            flex-wrap: wrap;
-            gap: 15px;
-        }
-
-        /* Hide large elements for this "App Mode" footer to save screen space */
-        .bbp-logo-wrap, .bbp-name, .bbp-socials {
-            display: none !important; 
-        }
-
-        /* Style the contact info to be small and horizontal */
-        .bbp-actions {
-            display: flex;
-            gap: 15px;
-            font-size: 0.9rem;
-        }
-        
-        .bbp-bottom {
-            font-size: 0.8rem;
-            margin-top: 0 !important;
-        }
-
-        /* Mobile Adjustment: Stack footer items if needed */
-        @media (max-width: 600px) {
-            .bbp-actions {
-                width: 100%;
-                justify-content: center;
-                padding-bottom: 5px;
-            }
-            .bbp-bottom {
-                width: 100%;
-                text-align: center;
-            }
         }
     </style>
 </head>
@@ -128,18 +102,35 @@
     </div>
 
     <footer class="bbp-footer" role="contentinfo">
-        <div class="bbp-actions">
-          <a class="bbp-btn primary" href="mailto:thebougiebeachpartyco@gmail.com" style="color: white; text-decoration: none;">💌 Email Us</a>
-          <span style="color:white">|</span>
-          <a class="bbp-btn alt" href="tel:+15413518497" style="color: white; text-decoration: none;">📞 (541) 351-8497</a>
+        <div class="bbp-logo-wrap">
+          <img
+            class="bbp-logo"
+            src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png"
+            alt="The Bougie Beach Party Co. Sun Logo"
+            width="184"
+            height="136"
+          />
         </div>
-        <div class="bbp-bottom" style="color: white;">
-          © 2026 Bougie Beach Party Co.
-        </div>
-        
-        <div class="bbp-logo-wrap">...</div>
+    
         <h3 class="bbp-name">The Bougie Beach Party Co.</h3>
-        <div class="bbp-socials">...</div>
+    
+        <div class="bbp-actions">
+          <a class="bbp-btn primary" href="mailto:thebougiebeachpartyco@gmail.com">💌 Email Us</a>
+          <a class="bbp-btn alt" href="tel:+15413518497">📞 Call / Text (541) 351-8497</a>
+        </div>
+    
+        <div class="bbp-socials">
+          <a href="https://www.instagram.com/thebougiebeachpartyco" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7.75 2C4.126 2 2 4.126 2 7.75v8.5C2 19.874 4.126 22 7.75 22h8.5C19.874 22 22 19.874 22 16.25v-8.5C22 4.126 19.874 2 16.25 2h-8.5zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10zm0 1.75a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5zM18 6.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0z" /></svg>
+          </a>
+          <a href="https://www.facebook.com/thebougiebeachpartyco" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.87v-7H8v-2.87h2.5v-2.2c0-2.47 1.48-3.83 3.74-3.83c1.08 0 2.2.19 2.2.19v2.4h-1.24c-1.22 0-1.6.76-1.6 1.54v1.9H17l-.4 2.87h-2.5v7A10 10 0 0 0 22 12" /></svg>
+          </a>
+        </div>
+    
+        <div class="bbp-bottom">
+          © 2026 Bougie Beach Party Co. • All rights reserved.
+        </div>
     </footer>
 
     <script src="script.js"></script>
