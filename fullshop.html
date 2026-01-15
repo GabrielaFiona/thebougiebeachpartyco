@@ -9,27 +9,38 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* 1. FLEX LAYOUT for Header + Iframe + Footer */
+        /* --- 1. LAYOUT RESET FOR SHOP PAGE --- */
         body, html { 
             background-color: #ffffff !important; 
             height: 100%; 
             margin: 0; 
-            overflow: hidden; /* Prevent double scrollbars */
+            overflow: hidden; /* Prevents double scrollbars (browser + iframe) */
         }
 
         body {
             display: flex;
             flex-direction: column;
+            padding-top: 0 !important; /* FIX: Overrides the 80px padding from style.css to remove the gap */
         }
 
-        /* 2. THE SHOP CONTAINER (Takes remaining space) */
+        /* --- 2. HEADER ADJUSTMENTS --- */
+        /* We override global header styles here to blend with the white iframe */
+        .site-header {
+            position: fixed;
+            background: #ffffff !important; /* Pure white to match iframe */
+            border-bottom: none !important; /* Removes the visible line */
+            box-shadow: 0 4px 20px rgba(0,0,0,0.04); /* Very subtle shadow for depth */
+        }
+
+        /* --- 3. THE SHOP CONTAINER --- */
         .shop-wrapper {
-            flex: 1; /* Grow to fill space between header and footer */
+            flex: 1; /* Automatically takes all available height between Header and Footer */
             width: 100%;
             border: none;
             background: #ffffff;
-            margin-top: 80px; /* Offset for Fixed Header */
+            margin-top: 80px; /* Pushes iframe down exactly below the fixed header */
             overflow: hidden;
+            position: relative;
         }
 
         iframe {
@@ -40,12 +51,21 @@
             background: #ffffff;
         }
 
-        /* 3. Footer Adjustments for this page */
+        /* --- 4. FOOTER ADJUSTMENTS --- */
         .bbp-footer {
-            margin-top: 0 !important; /* Remove huge gap for this specific page */
-            padding: 20px 20px !important; /* Slimmer footer for shop view */
-            flex-shrink: 0; /* Don't let footer shrink */
+            margin-top: 0 !important;
+            padding: 15px 20px !important; /* Compact styling for the shop view */
+            flex-shrink: 0; /* Ensures footer never gets squashed or pushed off */
+            position: relative;
+            z-index: 10;
+            background: var(--green); /* Ensures background color stays solid */
         }
+        
+        /* Optional: Hide the pulsing logo in footer on this page to save vertical space? 
+           Remove comments below if you want an even smaller footer */
+        /* .bbp-logo-wrap { display: none; } 
+        .bbp-footer { padding: 10px 20px !important; }
+        */
     </style>
 </head>
 <body>
