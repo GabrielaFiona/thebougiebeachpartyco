@@ -33,14 +33,15 @@
 
         /* --- 3. THE SHOP CONTAINER --- */
         .shop-wrapper {
-            flex: 1; /* Takes exactly the space between header and footer */
+            flex: 1; 
+            /* THE FIX: min-height: 0 prevents the iframe from forcing the footer off-screen or floating */
+            min-height: 0; 
             width: 100%;
             border: none;
             background: #ffffff;
-            margin-top: 80px; /* Pushes content below fixed header */
-            overflow: hidden;
+            margin-top: 80px; 
             position: relative;
-            z-index: 1; /* Keeps it on the base layer */
+            z-index: 1;
         }
 
         iframe {
@@ -58,11 +59,10 @@
             flex-shrink: 0; /* Prevents footer from collapsing */
             background: var(--green);
             position: relative;
+            z-index: 10; 
             
-            /* THE FIX: Remove shadow and layering to stop it from "floating" */
-            box-shadow: none !important;
-            z-index: auto !important; 
-            border-top: 1px solid rgba(255,255,255,0.1); /* Subtle definition line instead of shadow */
+            /* Visual Separation so it doesn't feel like it's "floating" */
+            border-top: 4px solid var(--gold); 
         }
     </style>
 </head>
