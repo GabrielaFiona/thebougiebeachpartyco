@@ -9,68 +9,67 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. THE FLEX SANDWICH (Layout Fix) --- */
-        /* Forces the page to be exactly the height of the screen, no more, no less. */
+        /* --- 1. THE GRID SANDWICH (The Robust Fix) --- */
+        /* We force the page to be exactly the height of the mobile screen */
         body, html { 
-            height: 100vh; /* Using vh ensures it fits the visual screen */
-            height: 100dvh; /* dynamic viewport height for mobile browsers */
+            height: 100vh; /* Fallback for older browsers */
+            height: 100dvh; /* Dynamic height: adjusts when mobile address bar shows/hides */
             margin: 0; 
             padding: 0;
             background-color: #ffffff !important; 
-            overflow: hidden; /* Only the shop interior should scroll */
+            overflow: hidden; /* Stops the main page from having double scrollbars */
         }
 
         body {
-            display: flex;
-            flex-direction: column; /* Stacks items vertically */
+            display: grid;
+            /* Row 1 (Header): "auto" -> Fits the header content exactly
+               Row 2 (Shop):   "1fr"  -> Takes up ALL remaining space
+               Row 3 (Footer): "auto" -> Fits the footer content exactly 
+            */
+            grid-template-rows: auto 1fr auto; 
             padding-top: 0 !important; /* Removes global padding override */
         }
 
-        /* --- 2. HEADER (Top Bun) --- */
-        /* Changing position to 'relative' makes it a solid block that pushes content down */
+        /* --- 2. HEADER (Row 1) --- */
         .site-header {
+            /* Resetting to 'relative' makes it a solid block in the grid */
             position: relative !important; 
-            flex: 0 0 auto; /* Do not grow, do not shrink */
+            top: auto; left: auto;
+            width: 100%;
             background: #ffffff !important; 
             border-bottom: none !important; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
             z-index: 20;
         }
 
-        /* --- 3. THE SHOP (The Meat) --- */
+        /* --- 3. THE SHOP (Row 2) --- */
         .shop-wrapper {
-            flex: 1 1 auto; /* Grow to fill ALL available space */
             position: relative;
             width: 100%;
+            height: 100%; /* Fills the "1fr" grid space completely */
             background: #ffffff;
-            overflow: hidden; /* Keeps scrollbar inside this container */
-            
-            /* FIX FOR WHITE LINE: Ensures no text-spacing gaps */
-            font-size: 0; 
-            line-height: 0; 
+            overflow: hidden; 
         }
 
         iframe {
             width: 100%;
             height: 100%;
             border: none;
-            /* FIX FOR WHITE LINE: Forces iframe to behave like a block, removing bottom gap */
-            display: block; 
+            display: block; /* Removes the "white line" gap at the bottom */
+            vertical-align: bottom; /* Double-check to ensure no gaps */
         }
 
-        /* --- 4. FOOTER (Bottom Bun) --- */
-        /* Changing position to 'relative' ensures it sits AFTER the shop, never ON TOP */
+        /* --- 4. FOOTER (Row 3) --- */
         .bbp-footer {
+            /* Sits naturally at the bottom of the grid stack */
             position: relative !important;
-            flex: 0 0 auto; /* Do not grow, do not shrink */
             margin: 0 !important;
             padding: 15px 20px !important;
             background: var(--green);
             z-index: 20;
             
-            /* Visual clean-up */
+            /* Clean border, no negative margins */
             border-top: 4px solid var(--gold);
-            margin-top: -1px !important; /* Pulls it up 1px to ensure seamless connection */
         }
     </style>
 </head>
