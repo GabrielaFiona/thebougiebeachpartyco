@@ -1,286 +1,140 @@
-/* =========================================
-   BOUGIE BEACH PARTY CO. - MASTER STYLES
-   ========================================= */
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bougie Beach Party Co. | Luxury Event Rentals Newport, OR</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* --- 1. VARIABLES (BRAND KIT) --- */
-:root {
-  /* Colors */
-  --gold: #b38538;
-  --gold-hover: #966f2d;
-  --page-pink: #FEEFED;
-  --dark-pink: #ffbebe;
-  --ink: #3A2F2A; /* Text Color */
-  --smokey-blue: #7b989a;
-  --green: #344235;
-  --white: #ffffff;
-  
-  /* Fonts */
-  --font-head: 'Josefin Slab', serif;
-  --font-body: 'Poppins', sans-serif;
-  --font-accent: 'Dancing Script', cursive; /* Web alternative for Magnolia */
-  
-  /* Layout */
-  --max-width: 1200px;
-  --header-height: 80px;
-  --radius: 8px;
-  --shadow: 0 10px 30px rgba(58, 47, 42, 0.08);
-}
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo">
+                <img src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="Bougie Beach Party Logo">
+            </a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <a href="packages.html" class="nav-link">Packages</a>
+                <a href="fullshop.html" class="nav-link">Explore All Packages</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="contact.html" class="nav-link">Contact</a>
+                
+                <a href="https://thebougiebeachpartyco.rentmy.shop/cart" class="btn btn-primary" style="padding: 10px 20px; display: flex; align-items: center; gap: 8px;">
+                    <span>Cart</span>
+                    <span style="font-size: 1.2rem;">🛒</span>
+                </a>
+            </nav>
+            <div class="mobile-toggle" id="mobile-toggle">☰</div>
+        </div>
+    </header>
 
-/* --- 2. GLOBAL RESET & TYPOGRAPHY --- */
-* { box-sizing: border-box; margin: 0; padding: 0; }
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h1>The Bougie Beach Party Co.</h1>
+            <p>Celebrate Without the Setup. Our proffesional delevery, set-up, and teardown of rental themes make your party feel smooth and look bougie.</p>
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="packages.html" class="btn btn-primary">View Packages</a>
+                <a href="shop.html" class="btn btn-secondary" style="color: white; border-color: white;">Browse Rentals</a>
+            </div>
+        </div>
+    </section>
 
-body {
-  font-family: var(--font-body);
-  background-color: var(--page-pink);
-  color: var(--ink);
-  line-height: 1.6;
-  padding-top: var(--header-height); /* Space for fixed header */
-}
+    <section class="section-pad">
+        <div class="container">
+            <div class="card-grid text-center" style="margin-top: 0;">
+                <div>
+                    <h3 style="color:var(--gold);">Curated Luxury</h3>
+                    <p>We style the scene, you make the memories. From rugs to goblets, we handle the design.</p>
+                </div>
+                <div>
+                    <h3 style="color:var(--gold);">Weather Ready</h3>
+                    <p>Our crystal-clear bubbles keep you cozy and dry, rain or shine, on the Oregon coast.</p>
+                </div>
+                <div>
+                    <h3 style="color:var(--gold);">Zero Hassle</h3>
+                    <p>Full delivery, professional setup, and teardown is included in every package.</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
-h1, h2, h3, h4 {
-  font-family: var(--font-head);
-  font-weight: 600;
-  line-height: 1.2;
-  margin-bottom: 1rem;
-}
+    <section class="section-pad" style="background: white;">
+        <div class="container">
+            <div class="text-center">
+                <h2>Choose Your Experience</h2>
+                <p>What are we celebrating today?</p>
+            </div>
+            <div class="card-grid">
+                <a href="packages.html#picnics" class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1595059698889-408a287959b9?auto=format&fit=crop&w=800" alt="Bubble Picnic">
+                    </div>
+                    <div class="card-body text-center">
+                        <h3>Bubble Picnics</h3>
+                        <p>Romantic dates and group gatherings.</p>
+                        <span style="color:var(--gold); font-weight:bold;">Explore &rarr;</span>
+                    </div>
+                </a>
+                <a href="packages.html#movie" class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1595769816263-9b910be24d5f?auto=format&fit=crop&w=800" alt="Movie Night">
+                    </div>
+                    <div class="card-body text-center">
+                        <h3>Movie Nights</h3>
+                        <p>Cinema under the stars (or inside a bubble).</p>
+                        <span style="color:var(--gold); font-weight:bold;">Explore &rarr;</span>
+                    </div>
+                </a>
+                <a href="shop.html" class="card">
+                    <div class="card-img">
+                        <img src="https://images.unsplash.com/photo-1530103862676-de3c9da59af7?auto=format&fit=crop&w=800" alt="Party Rentals">
+                    </div>
+                    <div class="card-body text-center">
+                        <h3>Shop DIY Rentals</h3>
+                        <p>Build your own party with our inventory.</p>
+                        <span style="color:var(--gold); font-weight:bold;">Shop All &rarr;</span>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </section>
 
-h1 { font-size: 3rem; }
-h2 { font-size: 2.5rem; color: var(--gold); }
-h3 { font-size: 1.75rem; }
+    <footer class="bbp-footer" role="contentinfo">
+        <div class="bbp-logo-wrap">
+          <img
+            class="bbp-logo"
+            src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png"
+            alt="The Bougie Beach Party Co. Sun Logo"
+            width="184"
+            height="136"
+          />
+        </div>
+    
+        <h3 class="bbp-name">The Bougie Beach Party Co.</h3>
+    
+        <div class="bbp-actions">
+          <a class="bbp-btn primary" href="mailto:thebougiebeachpartyco@gmail.com">💌 Email Us</a>
+          <a class="bbp-btn alt" href="tel:+15413518497">📞 Call / Text (541) 351-8497</a>
+        </div>
+    
+        <div class="bbp-socials">
+          <a href="https://www.instagram.com/thebougiebeachpartyco" target="_blank" aria-label="Instagram">
+            <svg viewBox="0 0 24 24"><path d="M7.75 2C4.126 2 2 4.126 2 7.75v8.5C2 19.874 4.126 22 7.75 22h8.5C19.874 22 22 19.874 22 16.25v-8.5C22 4.126 19.874 2 16.25 2h-8.5zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10zm0 1.75a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5zM18 6.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0z" /></svg>
+          </a>
+          <a href="https://www.facebook.com/thebougiebeachpartyco" target="_blank" aria-label="Facebook">
+            <svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.87v-7H8v-2.87h2.5v-2.2c0-2.47 1.48-3.83 3.74-3.83c1.08 0 2.2.19 2.2.19v2.4h-1.24c-1.22 0-1.6.76-1.6 1.54v1.9H17l-.4 2.87h-2.5v7A10 10 0 0 0 22 12" /></svg>
+          </a>
+        </div>
+    
+        <div class="bbp-bottom">
+          © 2026 Bougie Beach Party Co. • All rights reserved.
+        </div>
+    </footer>
 
-a { text-decoration: none; color: inherit; transition: 0.3s; }
-img { max-width: 100%; height: auto; display: block; }
-ul { list-style: none; }
-
-/* Utility Classes */
-.container {
-  max-width: var(--max-width);
-  margin: 0 auto;
-  padding: 0 20px;
-}
-
-.text-center { text-align: center; }
-.section-pad { padding: 80px 0; }
-
-/* --- 3. BUTTONS (CTA STRATEGY) --- */
-.btn {
-  display: inline-block;
-  padding: 14px 28px;
-  font-family: var(--font-body);
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1px;
-  border-radius: 50px;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-/* Primary: Gold (Book Now) */
-.btn-primary {
-  background-color: var(--gold);
-  color: var(--white);
-  border: 2px solid var(--gold);
-  box-shadow: 0 4px 15px rgba(179, 133, 56, 0.3);
-}
-
-.btn-primary:hover {
-  background-color: var(--gold-hover);
-  border-color: var(--gold-hover);
-  transform: translateY(-2px);
-}
-
-/* Secondary: Ghost (View Menu) */
-.btn-secondary {
-  background-color: transparent;
-  color: var(--gold);
-  border: 2px solid var(--gold);
-}
-
-.btn-secondary:hover {
-  background-color: var(--gold);
-  color: var(--white);
-}
-
-/* --- 4. HEADER & NAV --- */
-.site-header {
-  position: fixed;
-  top: 0; left: 0; right: 0;
-  height: var(--header-height);
-  background: rgba(254, 239, 237, 0.95); /* Semi-transparent Pink */
-  backdrop-filter: blur(10px);
-  z-index: 1000;
-  border-bottom: 1px solid rgba(179, 133, 56, 0.2);
-}
-
-.header-inner {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  height: 100%;
-}
-
-.logo img {
-  height: 60px; /* Adjust based on your logo file */
-}
-
-.nav-menu {
-  display: flex;
-  gap: 30px;
-}
-
-.nav-link {
-  font-weight: 500;
-  font-size: 1rem;
-  color: var(--ink);
-}
-
-.nav-link:hover { color: var(--gold); }
-
-.mobile-toggle { display: none; font-size: 1.5rem; cursor: pointer; }
-
-/* --- 5. HERO SECTION --- */
-.hero {
-  position: relative;
-  height: 85vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  background-image: url('https://images.unsplash.com/photo-1544979590-37e9b47cd705?q=80&w=2574&auto=format&fit=crop'); /* Placeholder: Sunset Beach */
-  background-size: cover;
-  background-position: center;
-}
-
-.hero-overlay {
-  position: absolute;
-  top: 0; left: 0; width: 100%; height: 100%;
-  background: rgba(58, 47, 42, 0.3); /* Darkens image for text readability */
-}
-
-.hero-content {
-  position: relative;
-  z-index: 2;
-  color: var(--white);
-  max-width: 800px;
-  padding: 0 20px;
-}
-
-.hero h1 {
-  font-size: 3.5rem;
-  margin-bottom: 1rem;
-  text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-}
-
-.hero p {
-  font-size: 1.25rem;
-  margin-bottom: 2rem;
-  font-weight: 300;
-}
-
-/* --- 6. FEATURED CARDS (Shop/Packages) --- */
-.card-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 40px;
-}
-
-.card {
-  background: var(--white);
-  border-radius: var(--radius);
-  overflow: hidden;
-  box-shadow: var(--shadow);
-  transition: transform 0.3s ease;
-}
-
-.card:hover { transform: translateY(-5px); }
-
-.card-img {
-  height: 250px;
-  background-color: #ddd;
-  overflow: hidden;
-}
-
-.card-img img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-}
-
-.card-body { padding: 25px; }
-
-.card-price {
-  color: var(--gold);
-  font-weight: 700;
-  font-size: 1.2rem;
-  margin-bottom: 10px;
-  display: block;
-}
-
-/* --- 7. ZIG-ZAG LAYOUT (Packages Page) --- */
-.zigzag-item {
-  display: flex;
-  align-items: center;
-  gap: 50px;
-  margin-bottom: 80px;
-}
-
-.zigzag-item:nth-child(even) {
-  flex-direction: row-reverse;
-}
-
-.zigzag-img { flex: 1; border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); }
-.zigzag-content { flex: 1; }
-
-/* --- 8. FOOTER --- */
-footer {
-  background-color: var(--green);
-  color: var(--white);
-  padding: 60px 0 30px;
-  margin-top: 60px;
-}
-
-.footer-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 40px;
-  margin-bottom: 40px;
-}
-
-.footer h3 { color: var(--gold); margin-bottom: 20px; font-size: 1.4rem; }
-.footer a { color: #ddd; display: block; margin-bottom: 10px; }
-.footer a:hover { color: var(--gold); }
-
-/* Newsletter */
-.newsletter-form { display: flex; gap: 10px; margin-top: 15px; }
-.newsletter-form input {
-  padding: 10px;
-  border-radius: 4px;
-  border: none;
-  flex: 1;
-}
-
-/* --- 9. MOBILE RESPONSIVE --- */
-@media (max-width: 768px) {
-  .nav-menu {
-    display: none; /* Hide nav on mobile (Needs JS to toggle) */
-    position: absolute;
-    top: var(--header-height);
-    left: 0;
-    width: 100%;
-    background: var(--page-pink);
-    flex-direction: column;
-    padding: 20px;
-    box-shadow: 0 10px 10px rgba(0,0,0,0.1);
-  }
-
-  .nav-menu.active { display: flex; }
-  .mobile-toggle { display: block; }
-  
-  .zigzag-item, .zigzag-item:nth-child(even) {
-    flex-direction: column;
-  }
-  
-  h1 { font-size: 2.2rem; }
-  .hero { height: 70vh; }
-}
+    <script src="script.js"></script>
+</body>
+</html>
