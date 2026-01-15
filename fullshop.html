@@ -9,103 +9,88 @@
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     
     <style>
-        /* --- 1. NATURAL SCROLL LAYOUT --- */
-        /* We allow the main page to scroll naturally. Simple and reliable. */
+        /* --- 1. LOCKED VIEWPORT --- */
+        /* This prevents the main page from scrolling, eliminating the whitespace gap */
         body, html { 
+            height: 100%;
             margin: 0; 
             padding: 0;
-            background-color: #ffffff !important; 
-            overflow-x: hidden; 
-            overflow-y: auto; /* Main page scroll is ON */
+            overflow: hidden; 
+            background-color: #ffffff !important;
         }
 
-        body {
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
-        }
-
-        /* --- 2. STICKY HEADER --- */
+        /* --- 2. FIXED HEADER --- */
         .site-header {
-            position: sticky; /* Sticks to top while you scroll */
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 90px;
             background: #ffffff !important; 
-            border-bottom: none !important; 
             box-shadow: 0 4px 20px rgba(0,0,0,0.04);
-            z-index: 1000;
+            z-index: 100;
         }
 
-        /* --- 3. THE SHOP WINDOW --- */
+        /* --- 3. SCROLLABLE SHOP AREA --- */
         .shop-wrapper {
-            position: relative;
+            position: absolute;
+            top: 90px;
+            /* CRITICAL: We stop the shop window EXACTLY where the footer begins */
+            bottom: 300px; 
             width: 100%;
-            background: #ffffff;
             z-index: 1;
-            /* This centers the iframe content */
-            display: flex;
-            justify-content: center;
+            background: #ffffff;
         }
 
         iframe {
             width: 100%;
-            /* TALL HEIGHT: This is the secret. We force it tall so it doesn't scroll inside. */
-            height: 4500px; 
+            height: 100%;
             border: none;
             display: block;
-            /* We hide the iframe's internal scrollbar */
-            overflow: hidden; 
         }
 
-        /* --- 4. THE FOOTER (New Dark Green Design) --- */
-        /* It sits naturally at the bottom of the page flow */
+        /* --- 4. FIXED FOOTER (Matches Screenshot) --- */
         .bbp-footer {
-            position: relative;
+            position: absolute;
+            bottom: 0;
+            left: 0;
             width: 100%;
+            height: 300px; /* Fixed Height */
             background-color: #314136; /* Dark Green */
             color: white;
-            z-index: 10;
+            z-index: 200;
             
-            /* Flex Layout */
+            /* Layout */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            gap: 20px;
-            padding: 40px 20px; /* Nice spacious padding */
+            gap: 15px;
+            padding: 20px;
             box-sizing: border-box;
         }
 
-        /* Logo */
-        .footer-logo { width: 90px; height: auto; margin-bottom: 5px; }
-
-        /* Title */
+        /* Footer Styles */
+        .footer-logo { width: 80px; height: auto; margin-bottom: 5px; }
         .footer-title {
             font-family: 'Josefin Slab', serif;
-            font-size: 2rem;
+            font-size: 1.8rem;
             margin: 0;
             letter-spacing: 1px;
             font-weight: 400;
             color: #ffffff;
-            text-align: center;
         }
-
-        /* Buttons Row */
         .footer-actions {
             display: flex;
             gap: 15px;
             flex-wrap: wrap;
             justify-content: center;
-            margin-top: 10px;
+            margin-top: 5px;
         }
-
-        /* Email Button */
         .btn-footer-email {
             background-color: rgba(255, 255, 255, 0.15);
             color: white;
-            padding: 14px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
@@ -116,12 +101,10 @@
             transition: background 0.3s;
         }
         .btn-footer-email:hover { background-color: rgba(255, 255, 255, 0.25); }
-
-        /* Phone Button */
         .btn-footer-phone {
             background-color: #ffffff;
             color: #314136;
-            padding: 14px 30px;
+            padding: 12px 25px;
             border-radius: 50px;
             text-decoration: none;
             font-family: 'Poppins', sans-serif;
@@ -132,37 +115,34 @@
             transition: transform 0.2s;
         }
         .btn-footer-phone:hover { transform: scale(1.05); }
-
-        /* Social Icons */
-        .footer-socials { display: flex; gap: 15px; margin-top: 15px; }
+        .footer-socials { display: flex; gap: 15px; margin-top: 10px; }
         .social-circle {
             background: white;
             color: #314136;
-            width: 45px;
-            height: 45px;
+            width: 40px;
+            height: 40px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-decoration: none;
-            font-size: 1.3rem;
+            font-size: 1.2rem;
             transition: transform 0.2s;
         }
         .social-circle:hover { transform: scale(1.1); }
-
-        /* Copyright */
         .footer-copy {
             font-family: 'Poppins', sans-serif;
-            font-size: 0.9rem;
+            font-size: 0.8rem;
             opacity: 0.8;
-            margin-top: 20px;
+            margin-top: 10px;
         }
-        
-        /* Mobile Fixes */
+
+        /* Mobile Responsive */
         @media (max-width: 600px) {
-            .footer-title { font-size: 1.6rem; }
-            .btn-footer-email, .btn-footer-phone { width: 100%; justify-content: center; }
-            .footer-actions { flex-direction: column; width: 100%; max-width: 300px; }
+            .bbp-footer { height: 350px; padding: 25px 15px; }
+            .shop-wrapper { bottom: 350px; } /* Must match footer height */
+            .footer-actions { flex-direction: column; width: 100%; max-width: 280px; }
+            .btn-footer-email, .btn-footer-phone { justify-content: center; width: 100%; }
         }
     </style>
 </head>
@@ -188,13 +168,12 @@
     </header>
 
     <div class="shop-wrapper">
-        <iframe src="https://thebougiebeachpartyco.rentmy.shop/products-list" name="rentmy-frame" title="RentMy Shop" scrolling="no"></iframe>
+        <iframe src="https://thebougiebeachpartyco.rentmy.shop/products-list" name="rentmy-frame" title="RentMy Shop"></iframe>
     </div>
 
     <footer class="bbp-footer">
         <img src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="Logo" class="footer-logo">
         <h2 class="footer-title">The Bougie Beach Party Co.</h2>
-        
         <div class="footer-actions">
             <a href="mailto:thebougiebeachpartyco@gmail.com" class="btn-footer-email">
                 <i class="fa-solid fa-envelope" style="color: #ff6b6b;"></i> Email Us
@@ -203,12 +182,10 @@
                 <i class="fa-solid fa-phone"></i> Call / Text (541) 351-8497
             </a>
         </div>
-        
         <div class="footer-socials">
             <a href="https://www.instagram.com/thebougiebeachpartyco" target="_blank" class="social-circle"><i class="fa-brands fa-instagram"></i></a>
             <a href="https://www.facebook.com/thebougiebeachpartyco" target="_blank" class="social-circle"><i class="fa-brands fa-facebook-f"></i></a>
         </div>
-        
         <div class="footer-copy">© 2026 Bougie Beach Party Co. • All rights reserved.</div>
     </footer>
 
