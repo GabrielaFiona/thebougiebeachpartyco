@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Packages | Bougie Beach Party Co.</title>
+    <title>All Rentals | Bougie Beach Party Co.</title>
     <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="assets/style.css">
 </head>
@@ -14,8 +14,16 @@
             <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="Logo"></a>
             <nav class="nav-menu" id="nav-menu">
                 <a href="index.html" class="nav-link">Home</a>
-                <a href="packages.html" class="nav-link">Packages</a>
-                <a href="movie-night.html" class="nav-link">Movie Night</a>
+                
+                <div class="dropdown">
+                    <a href="explore.html" class="nav-link dropdown-toggle">Explore ▾</a>
+                    <div class="dropdown-content">
+                        <a href="explore.html">Inspiration Gallery</a>
+                        <a href="packages.html">All Rentals</a>
+                        <a href="movie-night.html">Movie Night</a>
+                    </div>
+                </div>
+
                 <a href="faq.html" class="nav-link">FAQ</a>
                 <a href="contact.html" class="nav-link">Contact</a>
                 
@@ -28,10 +36,10 @@
         </div>
     </header>
 
-    <div class="container section-pad" style="margin-top: 40px;">
-        <div class="text-center" style="margin-bottom: 60px;">
-            <h1>Curated Experiences</h1>
-            <p style="font-size: 1.2rem;">Choose a package, we handle the rest.</p>
+    <div class="container section-pad" style="margin-top: 20px;">
+        <div class="text-center" style="margin-bottom: 80px;">
+            <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">All Rentals</h1>
+            <p style="font-size: 1.3rem; color: var(--gold);">Everything you need for the perfect coastal celebration.</p>
         </div>
 
         <div class="zigzag-item" id="picnics">
@@ -43,7 +51,7 @@
                 <span class="card-price">Starting at $160</span>
                 <p>An unforgettable way to celebrate life’s special moments. Our clear bubble tent transforms any outing into a styled, intimate escape.</p>
                 <br>
-                <ul style="list-style: disc; padding-left: 20px; margin-bottom: 20px;">
+                <ul style="list-style: disc; padding-left: 20px; margin-bottom: 25px;">
                     <li>10x10 Clear Bubble Tent styled with rugs & decor</li>
                     <li>Picnic table with curated tablescape</li>
                     <li>Place settings for 2 (Plates, flatware, glasses)</li>
@@ -63,7 +71,7 @@
                 <span class="card-price">Starting at $250</span>
                 <p>Your private bubble theater experience. Gather close and enjoy a magical movie night cozy and protected from the wind.</p>
                 <br>
-                <ul style="list-style: disc; padding-left: 20px; margin-bottom: 20px;">
+                <ul style="list-style: disc; padding-left: 20px; margin-bottom: 25px;">
                     <li>10x10 or 12x12 Bubble Tent</li>
                     <li>120" Movie Screen & 4K Projector</li>
                     <li>Premium Speaker System</li>
@@ -74,23 +82,17 @@
             </div>
         </div>
         
-        <div class="text-center section-pad" style="background: white; border-radius: var(--radius);">
-            <h3>Looking for something simple?</h3>
+        <div class="text-center section-pad" style="background: var(--white); border-radius: var(--radius); padding: 60px 20px;">
+            <h3 style="margin-bottom: 15px;">Looking for something simple?</h3>
             <p>You can rent individual items like cornhole, chairs, or just the screen!</p>
             <br>
-            <a href="fullshop.html" class="btn btn-secondary">View À La Carte Shop</a>
+            <a href="https://thebougiebeachpartyco.rentmy.shop/" class="btn btn-secondary">Shop À La Carte</a>
         </div>
     </div>
 
     <footer class="bbp-footer" role="contentinfo">
         <div class="bbp-logo-wrap">
-          <img
-            class="bbp-logo"
-            src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png"
-            alt="The Bougie Beach Party Co. Sun Logo"
-            width="184"
-            height="136"
-          />
+          <img class="bbp-logo" src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="The Bougie Beach Party Co. Sun Logo">
         </div>
     
         <h3 class="bbp-name">The Bougie Beach Party Co.</h3>
