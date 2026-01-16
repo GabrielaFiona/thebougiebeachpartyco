@@ -577,3 +577,95 @@ ul { list-style: none; }
     padding: 0 15px 20px 15px;
   }
 }
+
+/* =========================================
+   CONTACT PAGE STYLES (Added)
+   ========================================= */
+
+/* 1. Contact Chips (Email/Phone buttons) */
+.contact-chips {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+    margin-top: 25px;
+}
+
+/* 2. Contact Grid Layout */
+.contact-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr; /* Two equal columns */
+    gap: 30px;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+/* 3. The Cards (Form & Info) */
+.contact-card {
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid rgba(179, 133, 56, 0.1);
+    overflow: hidden;
+    height: 100%; /* Makes them equal height */
+}
+
+.card-head {
+    background: linear-gradient(180deg, #ffffff, #f8f1ea);
+    padding: 20px 25px;
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+}
+
+.card-head h3 {
+    margin: 0;
+    font-size: 1.5rem;
+    color: var(--ink);
+}
+
+.card-body {
+    padding: 25px;
+}
+
+/* 4. Form Styles */
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: var(--ink);
+    font-family: var(--font-body);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: var(--radius);
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: all 0.3s ease;
+    background: #fafafa;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    outline: none;
+    border-color: var(--gold);
+    background: #fff;
+    box-shadow: 0 0 0 3px rgba(179, 133, 56, 0.1);
+}
+
+/* 5. Mobile Responsive */
+@media (max-width: 768px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack vertically on phone */
+    }
+    
+    .contact-card {
+        margin-bottom: 20px;
+    }
+}
