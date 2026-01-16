@@ -73,4 +73,27 @@ document.addEventListener('DOMContentLoaded', () => {
              yearSpan.innerHTML = yearSpan.innerHTML.replace(/\d{4}/, currentYear);
         }
     }
+
+    // --- 6. RENTAL INQUIRY TOGGLE (NEW) ---
+    const inquiryBtns = document.querySelectorAll('.inquiry-toggle');
+    
+    inquiryBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            // Find the form container relative to the button clicked
+            // It is located in the parent container's next sibling or finding closest wrapper
+            // Based on HTML structure: Button is in .rental-actions, Form is in .inquiry-form-wrap (sibling)
+            const parent = this.closest('.zigzag-content');
+            const form = parent.querySelector('.inquiry-form-wrap');
+            
+            if(form) {
+                if(form.style.display === 'block') {
+                    form.style.display = 'none';
+                    this.textContent = 'Check Availability ▾';
+                } else {
+                    form.style.display = 'block';
+                    this.textContent = 'Close Form ▴';
+                }
+            }
+        });
+    });
 });
