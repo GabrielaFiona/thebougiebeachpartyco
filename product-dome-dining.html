@@ -1,0 +1,330 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Dome Dining Experience | Bougie Beach Party Co.</title>
+    <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Josefin+Slab:wght@400;600&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="assets/style.css">
+    
+    <style>
+        /* --- Product Page Specific Styles --- */
+        .product-hero-img {
+            width: 100%;
+            height: 50vh;
+            min-height: 400px;
+            object-fit: cover;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow-soft);
+            margin-bottom: 40px;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: 1.2fr 0.8fr;
+            gap: 50px;
+            align-items: start;
+        }
+
+        .product-desc {
+            font-size: 1.1rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .feature-list {
+            list-style: none;
+            margin: 30px 0;
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+
+        .feature-list li {
+            position: relative;
+            padding-left: 30px;
+            font-size: 1rem;
+            color: var(--ink);
+        }
+
+        .feature-list li::before {
+            content: "🍽️";
+            position: absolute;
+            left: 0;
+            top: 2px;
+            font-size: 1.1rem;
+        }
+
+        /* Terms Section */
+        .terms-box {
+            background: #fdfdfd;
+            border: 1px solid #eee;
+            padding: 25px;
+            border-radius: var(--radius);
+            margin-top: 40px;
+            font-size: 0.9rem;
+            color: #666;
+        }
+        .terms-box h4 { color: var(--ink); margin-bottom: 15px; }
+        .terms-box ul { list-style: disc; padding-left: 20px; margin-bottom: 15px; }
+        .terms-box li { margin-bottom: 8px; }
+
+        /* Alert/Notice Box */
+        .notice-box {
+            background-color: #fff4e5;
+            border-left: 4px solid var(--terracotta);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 4px;
+            font-size: 0.95rem;
+            color: #664d03;
+        }
+
+        /* Booking Card */
+        .booking-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: var(--radius);
+            box-shadow: 0 15px 40px rgba(179, 133, 56, 0.15);
+            border: 1px solid rgba(179, 133, 56, 0.2);
+            position: sticky;
+            top: 100px; 
+        }
+
+        .price-tag {
+            font-family: var(--font-head);
+            font-size: 2.5rem;
+            color: var(--gold);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .price-sub {
+            font-size: 0.9rem;
+            color: #888;
+            margin-bottom: 20px;
+            display: block;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 0;
+            border-bottom: 1px solid #eee;
+            font-size: 0.95rem;
+        }
+        
+        .detail-row:last-of-type { border-bottom: none; }
+        .detail-label { font-weight: 600; color: var(--ink); }
+        .detail-val { color: #666; text-align: right; }
+
+        /* Inquiry Form (Hidden by default) */
+        .inquiry-form {
+            display: none;
+            margin-top: 20px;
+            padding-top: 20px;
+            border-top: 1px dashed #ddd;
+            animation: fadeIn 0.4s ease;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-family: var(--font-body);
+        }
+
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+
+        /* Mobile Adjustments */
+        @media (max-width: 900px) {
+            .product-grid { grid-template-columns: 1fr; gap: 30px; }
+            .booking-card { position: static; margin-top: 20px; }
+            .product-hero-img { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a href="index.html" class="logo"><img src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="Logo"></a>
+            <nav class="nav-menu" id="nav-menu">
+                <a href="index.html" class="nav-link">Home</a>
+                <div class="dropdown">
+                    <a href="explore.html" class="nav-link dropdown-toggle">Explore ▾</a>
+                    <div class="dropdown-content">
+                        <a href="celebrations.html">Celebrations</a>
+                        <a href="packages.html">All Rentals</a>
+                        <a href="explore.html">Inspiration</a>
+                        <a href="product-styled-soiree.html">Styled Soiree</a>
+                    </div>
+                </div>
+                <a href="contact.html" class="nav-link">Contact</a>
+                <a href="faq.html" class="nav-link">FAQ</a>
+                <a href="https://thebougiebeachpartyco.rentmy.shop/cart" class="btn btn-primary" style="padding: 10px 20px; display: flex; align-items: center; gap: 8px;">
+                    <span>Cart</span>
+                    <span style="font-size: 1.2rem;">🛒</span>
+                </a>
+            </nav>
+            <div class="mobile-toggle" id="mobile-toggle">☰</div>
+        </div>
+    </header>
+
+    <div class="section-pad" style="padding-bottom: 20px; background-color: var(--white);">
+        <div class="container text-center" style="max-width: 800px; margin: 0 auto;">
+            <span style="font-family: var(--font-accent); font-size: 1.8rem; color: var(--gold); display: block; margin-bottom: 5px;">Private Dining Under the Stars</span>
+            <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">The Dome Dining Experience</h1>
+            <p style="font-size: 1.2rem; color: var(--ink);">Intimate, weatherproof luxury for your backyard or patio.</p>
+        </div>
+    </div>
+
+    <div class="section-pad" style="padding-top: 20px;">
+        <div class="container">
+            
+            <img src="https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=2670&auto=format&fit=crop" alt="Dome Dining Experience" class="product-hero-img">
+
+            <div class="product-grid">
+                
+                <div class="product-content">
+                    <h3>Your Personal Dining Sphere</h3>
+                    <p class="product-desc">
+                        Enjoy a private dining experience under the glow of your own personal dome! Our 10×10 <em>Bougie Bubble</em> comes fully styled with picnic tables, rugs, pillows, candles, and décor — everything needed for an unforgettable backyard dinner or cozy winter evening.
+                    </p>
+                    <p class="product-desc">
+                        Perfect for romantic dates, anniversaries, or intimate gatherings with friends. You stay warm and dry while enjoying the view.
+                    </p>
+
+                    <div class="notice-box">
+                        <strong>⚠️ Important Note:</strong> This package is NOT for beach picnics. If you are looking for a beach setup, please view our <a href="packages.html#picnics" style="text-decoration: underline;">Beach Experiences</a>. <br><br>
+                        <em>Setups in Public Parks/lands may require a special use permit.</em>
+                    </div>
+
+                    <div style="background: var(--page-pink); padding: 30px; border-radius: var(--radius); margin-top: 30px;">
+                        <h4 style="color: var(--gold);">What's Included</h4>
+                        <ul class="feature-list">
+                            <li><strong>10×10 Bubble Dome:</strong> Clear, weather-resistant shelter.</li>
+                            <li><strong>Dining Setup:</strong> Low picnic tables, rugs, and plush pillows.</li>
+                            <li><strong>Table Styling:</strong> Plates, glassware, candles, and table décor.</li>
+                            <li><strong>Full Service:</strong> Complete delivery, inflation, styling, and teardown.</li>
+                        </ul>
+                    </div>
+
+                    <div class="terms-box">
+                        <h4>📋 Important Terms & Conditions</h4>
+                        <ul>
+                            <li><strong>Site Access:</strong> Area must be cleared and ready before arrival (furniture moved, etc.). Smoke-free for indoor rentals.</li>
+                            <li><strong>Pets:</strong> Must be secured before team arrival and remain contained until departure.</li>
+                            <li><strong>Décor:</strong> No adhesives, glitter, confetti, or paint on equipment. Personal food/drink is allowed if it doesn't stain.</li>
+                            <li><strong>Cleaning Fees:</strong> $50 fee for excessively soiled items (mud, spills). Full replacement cost for damaged items.</li>
+                            <li><strong>Pickup:</strong> Client (18+) must be present for teardown. If no one is present, we may remove items and document condition.</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <aside class="booking-card">
+                    <span class="price-tag">$275.00</span>
+                    <span class="price-sub">Base Package (2 Hours)</span>
+                    
+                    <div style="margin-bottom: 25px;">
+                        <div class="detail-row">
+                            <span class="detail-label">Capacity</span>
+                            <span class="detail-val">2 - 6 Guests</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Location</span>
+                            <span class="detail-val">Backyard / Patio</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Weather</span>
+                            <span class="detail-val">Wind Dependent</span>
+                        </div>
+                    </div>
+
+                    <div style="text-align: center;">
+                        <button id="cardInquiryBtn" class="btn btn-primary" style="width: 100%; font-size: 1.1rem;">Check Availability ▾</button>
+                        <p style="font-size: 0.8rem; color: #888; margin-top: 10px;">We check weather & location before booking.</p>
+                    </div>
+
+                    <div id="cardInquiryForm" class="inquiry-form">
+                        <form action="https://formspree.io/f/xgvrevpl" method="POST">
+                            <input type="hidden" name="service" value="Dome Dining Experience Inquiry">
+                            
+                            <label style="font-size:0.9rem; font-weight:bold; display:block; margin-bottom:5px;">Name</label>
+                            <input type="text" name="name" class="form-input" placeholder="Your Name" required>
+
+                            <label style="font-size:0.9rem; font-weight:bold; display:block; margin-bottom:5px;">Email</label>
+                            <input type="email" name="email" class="form-input" placeholder="email@example.com" required>
+
+                            <label style="font-size:0.9rem; font-weight:bold; display:block; margin-bottom:5px;">Desired Date</label>
+                            <input type="date" name="date" class="form-input" required>
+
+                            <label style="font-size:0.9rem; font-weight:bold; display:block; margin-bottom:5px;">Location / Address</label>
+                            <input type="text" name="location" class="form-input" placeholder="e.g. Backyard in Newport" required>
+
+                            <button type="submit" class="btn btn-accent" style="width:100%; margin-top:10px;">Send Inquiry</button>
+                        </form>
+                    </div>
+
+                </aside>
+
+            </div>
+        </div>
+    </div>
+
+    <div style="background: var(--page-pink);">
+        <svg class="wave-divider" viewBox="0 0 1440 120" preserveAspectRatio="none">
+             <path fill="#ffffff" d="M0,32L48,37.3C96,43,192,53,288,58.7C384,64,480,64,576,58.7C672,53,768,43,864,42.7C960,43,1056,53,1152,58.7C1248,64,1344,64,1392,64L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+        </svg>
+    </div>
+
+    <div class="section-pad" style="padding-top: 60px;">
+        <div class="container text-center">
+            <h2>Looking for a Beach Setup?</h2>
+            <p style="font-size: 1.1rem; max-width: 600px; margin: 0 auto 30px;">
+                This package is designed for private property. If you want the sand between your toes, check out our beach picnics!
+            </p>
+            <a href="packages.html#picnics" class="btn btn-secondary">View Beach Picnics</a>
+        </div>
+    </div>
+
+    <footer class="bbp-footer" role="contentinfo">
+        <div class="bbp-logo-wrap">
+          <img class="bbp-logo" src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="Logo">
+        </div>
+        <h3 class="bbp-name">The Bougie Beach Party Co.</h3>
+        <div class="bbp-actions">
+          <a class="bbp-btn primary" href="mailto:thebougiebeachpartyco@gmail.com">💌 Email Us</a>
+          <a class="bbp-btn alt" href="tel:+15413518497">📞 Call / Text (541) 351-8497</a>
+        </div>
+        <div class="bbp-socials">
+          <a href="https://www.instagram.com/thebougiebeachpartyco" target="_blank"><svg viewBox="0 0 24 24"><path d="M7.75 2C4.126 2 2 4.126 2 7.75v8.5C2 19.874 4.126 22 7.75 22h8.5C19.874 22 22 19.874 22 16.25v-8.5C22 4.126 19.874 2 16.25 2h-8.5zM12 7a5 5 0 1 1 0 10a5 5 0 0 1 0-10zm0 1.75a3.25 3.25 0 1 0 0 6.5a3.25 3.25 0 0 0 0-6.5zM18 6.5a1 1 0 1 1-2 0a1 1 0 0 1 2 0z" /></svg></a>
+          <a href="https://www.facebook.com/thebougiebeachpartyco" target="_blank"><svg viewBox="0 0 24 24"><path d="M22 12a10 10 0 1 0-11.5 9.87v-7H8v-2.87h2.5v-2.2c0-2.47 1.48-3.83 3.74-3.83c1.08 0 2.2.19 2.2.19v2.4h-1.24c-1.22 0-1.6.76-1.6 1.54v1.9H17l-.4 2.87h-2.5v7A10 10 0 0 0 22 12" /></svg></a>
+        </div>
+        <div class="bbp-bottom">© 2026 Bougie Beach Party Co. • All rights reserved.</div>
+    </footer>
+
+    <script src="assets/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const cardBtn = document.getElementById('cardInquiryBtn');
+            const cardForm = document.getElementById('cardInquiryForm');
+            
+            if(cardBtn && cardForm) {
+                cardBtn.addEventListener('click', () => {
+                    if(cardForm.style.display === 'block') {
+                        cardForm.style.display = 'none';
+                        cardBtn.textContent = 'Check Availability ▾';
+                    } else {
+                        cardForm.style.display = 'block';
+                        cardBtn.textContent = 'Close Form ▴';
+                    }
+                });
+            }
+        });
+    </script>
+</body>
+</html>
