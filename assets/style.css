@@ -1080,3 +1080,56 @@ ul { list-style: none; }
         width: 100%;
     }
 }
+
+
+/* =========================================
+   13. HOMEPAGE ADDITIONS (Interactive)
+   ========================================= */
+
+/* A. Card Links */
+.card-link {
+    color: var(--gold);
+    font-weight: bold;
+    margin-top: 15px;
+    display: block;
+    transition: letter-spacing 0.3s;
+}
+.card:hover .card-link {
+    letter-spacing: 1px;
+}
+
+/* B. Celebration Pills */
+.celebration-cloud {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.celeb-pill {
+    background: var(--white);
+    border: 1px solid rgba(179, 133, 56, 0.3);
+    color: var(--ink);
+    padding: 12px 24px;
+    border-radius: 50px;
+    font-size: 0.95rem;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.03);
+    text-decoration: none;
+}
+
+.celeb-pill:hover {
+    background: var(--gold);
+    color: var(--white);
+    border-color: var(--gold);
+    transform: translateY(-3px);
+    box-shadow: 0 8px 15px rgba(179, 133, 56, 0.2);
+}
+
+/* C. Image Transition Class */
+.slide-img {
+    transition: opacity 0.4s ease;
+}
