@@ -9,19 +9,68 @@
     
     <style>
         /* --- Product Page Specific Styles --- */
-        .product-hero-img {
+        * { box-sizing: border-box; }
+
+        /* === UNIFIED SQUARE GALLERY STYLES === */
+        .gallery-wrapper {
+            position: relative;
+            margin-bottom: 50px;
             width: 100%;
-            height: 50vh;
-            min-height: 400px;
-            object-fit: cover;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow-soft);
-            margin-bottom: 40px;
         }
 
+        /* Desktop: 4-Column Grid logic for perfect squares */
+        .gallery-track {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: auto;
+            gap: 15px;
+            width: 100%;
+        }
+
+        /* Common Image Styles */
+        .gallery-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            aspect-ratio: 1 / 1; /* FORCE SQUARE SHAPE */
+            border-radius: var(--radius);
+            cursor: pointer;
+            transition: opacity 0.3s ease;
+            display: block; 
+        }
+
+        .gallery-img:hover { opacity: 0.9; }
+
+        /* The First Image acts as the "Glamour Shot" (2x2 Square) */
+        .gallery-img:first-child {
+            grid-column: span 2;
+            grid-row: span 2;
+            cursor: default;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        /* Mobile Dots */
+        .gallery-dots {
+            display: none;
+            justify-content: center;
+            gap: 8px;
+            margin-top: 15px;
+        }
+        
+        .dot {
+            width: 8px;
+            height: 8px;
+            background-color: #ddd;
+            border-radius: 50%;
+            transition: background-color 0.3s;
+        }
+        
+        .dot.active { background-color: var(--gold); }
+
+        /* Layout */
         .product-grid {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr; /* Content Left, Details Right */
+            grid-template-columns: 1.2fr 0.8fr; 
             gap: 50px;
             align-items: start;
         }
@@ -55,7 +104,7 @@
             color: var(--gold);
         }
 
-        /* The "Sticky" Booking Card on the right */
+        /* Booking Card */
         .booking-card {
             background: var(--white);
             padding: 30px;
@@ -63,7 +112,7 @@
             box-shadow: 0 15px 40px rgba(179, 133, 56, 0.15);
             border: 1px solid rgba(179, 133, 56, 0.2);
             position: sticky;
-            top: 100px; /* Sticks when scrolling */
+            top: 100px;
         }
 
         .price-tag {
@@ -97,8 +146,29 @@
         @media (max-width: 900px) {
             .product-grid { grid-template-columns: 1fr; gap: 30px; }
             .booking-card { position: static; margin-top: 20px; }
-            .product-hero-img { height: 300px; }
             .feature-list { grid-template-columns: 1fr; }
+            
+            /* Mobile Gallery */
+            .gallery-track {
+                display: flex;
+                overflow-x: auto;
+                scroll-snap-type: x mandatory; 
+                gap: 15px; 
+                border-radius: var(--radius);
+                scrollbar-width: none; 
+                padding-bottom: 10px;
+            }
+            .gallery-track::-webkit-scrollbar { display: none; }
+
+            .gallery-img {
+                width: 85vw;     
+                flex: 0 0 85vw;  
+                aspect-ratio: 1 / 1; 
+                scroll-snap-align: center;
+                grid-column: auto !important;
+                grid-row: auto !important;
+            }
+            .gallery-dots { display: flex; }
         }
     </style>
 </head>
@@ -114,7 +184,6 @@
                     <div class="dropdown-content">
                         <a href="../pages/celebrations.html">Celebrations</a>
                         <a href="../pages/packages.html">All Rentals</a>
-                        <a href="../themes/watch-party.html">Watch Parties</a>
                         
                         <a href="product-styled-soiree.html">Styled Soiree</a>
                         <a href="product-basic-movie.html">Basic Movie Night</a>
@@ -134,7 +203,7 @@
         </div>
     </header>
 
-    <div class="section-pad" style="padding-bottom: 20px; background-color: var(--white);">
+    <div class="section-pad" style="padding-bottom: 20px; background-color: #ffffff;">
         <div class="container text-center" style="max-width: 800px; margin: 0 auto;">
             <span style="font-family: var(--font-accent); font-size: 1.8rem; color: var(--gold); display: block; margin-bottom: 5px;">Luxury Low-Dining Experience</span>
             <h1 style="font-size: clamp(2.5rem, 5vw, 4rem);">The Styled Soirée</h1>
@@ -142,10 +211,27 @@
         </div>
     </div>
 
-    <div class="section-pad" style="padding-top: 20px;">
+    <div class="section-pad" style="padding-top: 20px; background-color: #ffffff;">
         <div class="container">
             
-            <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?q=80&w=2574&auto=format&fit=crop" alt="Styled Soiree Setup" class="product-hero-img">
+            <div class="gallery-wrapper">
+                <div class="gallery-track" id="galleryTrack">
+                    <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?q=80&w=2574&auto=format&fit=crop" class="gallery-img" alt="Styled Soiree Main">
+                    
+                    <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?q=80&w=600&auto=format&fit=crop" class="gallery-img" alt="Detail 1">
+                    <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?q=80&w=600&auto=format&fit=crop" class="gallery-img" alt="Detail 2">
+                    <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?q=80&w=600&auto=format&fit=crop" class="gallery-img" alt="Detail 3">
+                    <img src="https://images.unsplash.com/photo-1549417229-aa67d3263c09?q=80&w=600&auto=format&fit=crop" class="gallery-img" alt="Detail 4">
+                </div>
+                
+                <div class="gallery-dots" id="galleryDots">
+                    <div class="dot active"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                    <div class="dot"></div>
+                </div>
+            </div>
 
             <div class="product-grid">
                 
@@ -158,7 +244,7 @@
                         We handle the complete delivery, setup, and styling, so all you have to do is arrive with your guests and your favorite food. From plush velvet pillows to crystal glassware, every detail is curated to make your celebration unforgettable.
                     </p>
 
-                    <div style="background: var(--page-pink); padding: 30px; border-radius: var(--radius); margin-top: 30px;">
+                    <div style="background: #fff0f5; padding: 30px; border-radius: var(--radius); margin-top: 30px;">
                         <h4 style="color: var(--gold);">What's Included?</h4>
                         <ul class="feature-list">
                             <li>Handcrafted Low Tables</li>
@@ -222,12 +308,6 @@
         </div>
     </div>
 
-    <div style="background: var(--page-pink);">
-        <svg class="wave-divider" viewBox="0 0 1440 120" preserveAspectRatio="none">
-             <path fill="#ffffff" d="M0,32L48,37.3C96,43,192,53,288,58.7C384,64,480,64,576,58.7C672,53,768,43,864,42.7C960,43,1056,53,1152,58.7C1248,64,1344,64,1392,64L1440,64L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
-        </svg>
-    </div>
-
     <footer class="bbp-footer" role="contentinfo">
         <div class="bbp-logo-wrap">
           <img class="bbp-logo" src="https://raw.githubusercontent.com/GabrielaFiona/bougie-assets/3f8b85245206b18ae4050463b5044ed74ea5782b/sunlogotrans.png" alt="Logo">
@@ -245,5 +325,40 @@
     </footer>
 
     <script src="../assets/js/script.js"></script>
+    
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // --- Gallery Logic ---
+            const track = document.getElementById('galleryTrack');
+            const images = track.querySelectorAll('.gallery-img');
+            const dots = document.querySelectorAll('.dot');
+            const isMobile = window.innerWidth <= 900;
+
+            // 1. Desktop Click to Swap
+            images.forEach((img, index) => {
+                img.addEventListener('click', () => {
+                    if(window.getComputedStyle(track).display === 'grid') {
+                        if (index !== 0) {
+                            const mainSrc = images[0].src;
+                            images[0].src = img.src;
+                            img.src = mainSrc;
+                        }
+                    }
+                });
+            });
+
+            // 2. Mobile Scroll Active Dot Logic
+            track.addEventListener('scroll', () => {
+                const scrollLeft = track.scrollLeft;
+                const width = track.offsetWidth;
+                const index = Math.round(scrollLeft / (width * 0.85)); // approximate
+                
+                dots.forEach(d => d.classList.remove('active'));
+                if(dots[index]) {
+                    dots[index].classList.add('active');
+                }
+            });
+        });
+    </script>
 </body>
 </html>
