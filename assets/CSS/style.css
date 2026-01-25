@@ -50,6 +50,22 @@ body {
   overflow-x: hidden; /* Prevents side scroll glitches */
 }
 
+html { 
+    scroll-behavior: smooth; 
+}
+
+body {
+    /* ... your existing styles ... */
+    overflow-x: hidden; 
+    -webkit-font-smoothing: antialiased; /* Makes text rendering smoother */
+}
+
+/* Add this new utility to help the browser handle the heavy images */
+.card-img img, .slide-img {
+    will-change: transform; /* Tells browser to prepare for animation */
+    transform: translateZ(0); /* Hardware acceleration hack */
+}
+
 h1, h2, h3, h4 {
   font-family: var(--font-head);
   font-weight: 600;
@@ -146,16 +162,17 @@ ul { list-style: none; }
   border-color: #d67a3a;
 }
 
-/* --- 4. HEADER & NAV (Updated for Dropdown) --- */
+/* --- 4. HEADER & NAV (Optimized) --- */
 .site-header {
   position: fixed;
   top: 0; left: 0; right: 0;
   height: var(--header-height);
+  /* Increased opacity slightly so we can drop the blur */
   background: rgba(254, 239, 237, 0.98); 
-  backdrop-filter: blur(10px);
   z-index: 1000;
   border-bottom: 1px solid rgba(179, 133, 56, 0.2);
-  box-shadow: 0 2px 20px rgba(0,0,0,0.03);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.05); /* Smaller shadow radius is faster */
+  /* backdrop-filter removed for performance */
 }
 
 .header-inner {
